@@ -1,6 +1,5 @@
 function updateTime()
 {
-  console.log('updating time');
   var now = new Date();
   var h = now.getHours()
   var m = now.getMinutes();
