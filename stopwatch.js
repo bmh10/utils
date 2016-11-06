@@ -11,6 +11,7 @@ function initTime()
 function updateTimer()
 {
   var btn1 = document.getElementById('btn1');
+  var btn2 = document.getElementById('btn2');
   if (running)
   {
     running = false;
@@ -24,6 +25,7 @@ function updateTimer()
     running = true;
     btn1.innerHTML = "Stop";
     btn1.className = "btn btn-danger";
+    btn2.className = "btn";
   }
 }
 
