@@ -3,6 +3,7 @@ var startTime = -1;
 var savedTime = 0;
 var targetHours = 0;
 var targetMins = 30;
+var timerDiv;
 var timeElem;
 var startStopBtn;
 var resetBtn;
@@ -15,6 +16,7 @@ Number.prototype.mod = function(n) { return ((this%n)+n)%n; }
 
 function initTimer()
 {
+  timerDiv = document.getElementById('timer');
   timeElem = document.getElementById('time');
   startStopBtn = document.getElementById('startStopBtn');
   resetBtn = document.getElementById('resetBtn');
@@ -27,8 +29,21 @@ function initTimer()
   hold(decHoursBtn, function() { adjHours(-1); });
   hold(incMinsBtn, function() { adjMinutes(1); });
   hold(decMinsBtn, function() { adjMinutes(-1); });
+
+  timerDiv.onmouseover = function() { showArrows(true); };
+  timerDiv.onmouseout = function() { showArrows(false); };
+  showArrows(false);
   resetTimer();
   tick();
+}
+
+function showArrows(show)
+{
+  var vis = show ? "visible" : "hidden";
+  incHoursBtn.style.visibility = vis;
+  decHoursBtn.style.visibility = vis;
+  incMinsBtn.style.visibility = vis;
+  decMinsBtn.style.visibility = vis;
 }
 
 function adjHours(n)
@@ -109,15 +124,14 @@ function formatNum(n)
   return (n < 10) ? "0" + n : n;
 }
 
-
 function hold(btn, action) {
     var t;
     var repeat = function () {
         action();
         t = setTimeout(repeat, start);
-        if (start > 50)
+        if (start > 100)
         {
-          start = start * 0.8;
+          start = start * 0.6;
         }
     }
 
