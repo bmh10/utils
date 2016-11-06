@@ -5,11 +5,11 @@
     <script type="text/javascript" src="stopwatch.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
   </head>
-  <body onload="initTime()">
+  <body onload="initTimer()">
     <div class="centered">
       <h1 id="time"></h1>
-      <button id="btn2" class="btn hidden">Reset</button>
-      <button id="btn1" autofocus class="btn btn-success" onclick="updateTimer()">Start</button>
+      <button id="startStopBtn" autofocus class="btn btn-success" style="margin: 5px" onclick="updateTimer()">Start</button>
+      <button id="resetBtn" class="btn btn-primary" onclick="resetTimer()">Reset</button>
     </div>
   </body>
 </html>

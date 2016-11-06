@@ -1,31 +1,44 @@
 var running = false;
 var startTime = -1;
 var savedTime = 0;
+var timeElem;
+var startStopBtn;
+var resetBtn;
 
-function initTime()
+function initTimer()
 {
-  document.getElementById('time').innerHTML = formatTime(0, 0, 0, 0);
+  timeElem = document.getElementById('time');
+  startStopBtn = document.getElementById('startStopBtn');
+  resetBtn = document.getElementById('resetBtn');
+  resetTimer();
   tick();
+}
+
+function resetTimer()
+{
+  timeElem.innerHTML = formatTime(0, 0, 0, 0);
+  resetBtn.style.visibility = "hidden";
+  running = false;
+  savedTime = 0;
 }
 
 function updateTimer()
 {
-  var btn1 = document.getElementById('btn1');
-  var btn2 = document.getElementById('btn2');
   if (running)
   {
     running = false;
     savedTime += new Date().getTime() - startTime.getTime();
-    btn1.innerHTML = "Start";
-    btn1.className = "btn btn-success";
+    startStopBtn.innerHTML = "Start";
+    startStopBtn.className = "btn btn-success";
+    resetBtn.style.visibility = "visible";
   }
   else
   {
     startTime = new Date();
     running = true;
-    btn1.innerHTML = "Stop";
-    btn1.className = "btn btn-danger";
-    btn2.className = "btn";
+    startStopBtn.innerHTML = "Stop";
+    startStopBtn.className = "btn btn-danger";
+    resetBtn.style.visibility = "hidden";
   }
 }
 
@@ -33,7 +46,7 @@ function tick()
 {
   if (running)
   {
-    document.getElementById('time').innerHTML = calcTime();
+    timeElem.innerHTML = calcTime();
   }
 
   setTimeout(tick, 1);
