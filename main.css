@@ -12,3 +12,41 @@
 *:focus {
   outline: 0 !important;
 }
+
+#incHours {
+  right: 105px;
+  top: 15px;
+}
+
+#incMinutes {
+  right: 50px;
+  top: 15px;
+}
+
+#decHours {
+  right: 105px;
+  bottom: 8px;
+}
+
+#decMinutes {
+  right: 50px;
+  bottom: 8px;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  position: relative;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent; 
+  border-bottom: 10px solid grey;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  position: relative;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent; 
+  border-top: 10px solid grey;
+}
