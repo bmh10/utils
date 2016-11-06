@@ -1,5 +1,6 @@
 var running = false;
 var startTime = -1;
+var savedTime = 0;
 
 function initTime()
 {
@@ -9,19 +10,17 @@ function initTime()
 
 function updateTimer()
 {
-  var btn1 = document.getElementById('b1');
+  var btn1 = document.getElementById('btn1');
   if (running)
   {
     running = false;
+    savedTime += new Date().getTime() - startTime.getTime();
     btn1.innerHTML = "Start";
     btn1.className = "btn btn-success";
   }
   else
   {
-    if (startTime === -1)
-    {
-      startTime = new Date();
-    }
+    startTime = new Date();
     running = true;
     btn1.innerHTML = "Stop";
     btn1.className = "btn btn-danger";
@@ -41,7 +40,7 @@ function tick()
 function calcTime()
 {
   var now = new Date();
-  var ms = now.getTime() - startTime.getTime();
+  var ms = now.getTime() - startTime.getTime() + savedTime;
   var ms_ = Math.floor((ms % 1000) / 10);
   var t = Math.floor(ms / 1000);
   var s = t % 60;
