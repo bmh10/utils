@@ -1,12 +1,14 @@
 <!doctype html>
 <html>
   <head>
-    <title>Stopwatch</title>
+    <title>Clock</title>
+    <script type="text/javascript" src="stopwatch.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
   </head>
-  <body onload="show();">
-    <div>Time: <span id="time"></span></div>
-    <input type="button" value="start" onclick="start();">
-    <input type="button" value="stop" onclick="stop();">
-    <input type="button" value="reset" onclick="reset()">
+  <body onload="initTime()">
+    <div class="centered">
+      <h1 id="time"></h1>
+      <button id="b1" class="btn btn-success" onclick="updateTimer()">Start</button>
+    </div>
   </body>
 </html>
