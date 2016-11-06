@@ -1,6 +1,7 @@
 @import url("bootstrap.css");
 
 .centered {
+  text-align: center;
   position: fixed; /* or absolute */
   top: 50%;
   left: 50%;

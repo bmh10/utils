@@ -1,18 +1,23 @@
 function updateTime()
 {
   var now = new Date();
-  var h = now.getHours()
-  var m = now.getMinutes();
-  var s = now.getSeconds();
-
-  document.getElementById('time').innerHTML = formatTime(h, m, s)
-  
+  document.getElementById('time').innerHTML = formatTime(now);
+  document.getElementById('date').innerHTML = formatDate(now);
   setTimeout(updateTime, 1000);
 }
 
-function formatTime(h, m, s)
+function formatTime(now)
 {
-  return formatNum(h) + ":" + formatNum(m) + ":" + formatNum(s);
+  return formatNum(now.getHours()) + ":" +
+         formatNum(now.getMinutes()) + ":" + 
+         formatNum(now.getSeconds());
+}
+
+function formatDate(now)
+{
+  return formatNum(now.getDate()) + "/" +
+         formatNum(now.getMonth()+1) + "/" + 
+         now.getFullYear();
 }
 
 function formatNum(n)
