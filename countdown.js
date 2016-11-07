@@ -100,7 +100,7 @@ function calcTime()
 {
   var now = new Date();
   var targetTime = targetHours*60*60*1000 + targetMins*60*1000;
-  var ms = targetTime - (now.getTime() - startTime.getTime() + savedTime);
+  var ms = Math.max(0, targetTime - (now.getTime() - startTime.getTime() + savedTime));
   var ms_ = Math.floor((ms % 1000) / 10);
   var t = Math.floor(ms / 1000);
   var s = t % 60;
