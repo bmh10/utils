@@ -30,7 +30,7 @@ function initTimer()
   hold(incMinsBtn, function() { adjMinutes(1); });
   hold(decMinsBtn, function() { adjMinutes(-1); });
 
-  timerDiv.onmouseover = function() { showArrows(true); };
+  timerDiv.onmouseover = function() { if (!running) showArrows(true); };
   timerDiv.onmouseout = function() { showArrows(false); };
   showArrows(false);
   resetTimer();
