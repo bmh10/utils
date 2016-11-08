@@ -1,4 +1,5 @@
 var running = false;
+var completed = false;
 var startTime = -1;
 var savedTime = 0;
 var targetHours = 0;
@@ -11,6 +12,7 @@ var incHoursBtn;
 var decHoursBtn;
 var incMinsBtn;
 var decMinsBtn;
+var sound;
 
 Number.prototype.mod = function(n) { return ((this%n)+n)%n; }
 
@@ -24,13 +26,15 @@ function initTimer()
   decHoursBtn = document.getElementById('decHours');
   incMinsBtn = document.getElementById('incMinutes');
   decMinsBtn = document.getElementById('decMinutes');
-  
+  sound =  new Audio('bleep.mp3');
+  sound.loop = true;
+
   hold(incHoursBtn, function() { adjHours(1); });
   hold(decHoursBtn, function() { adjHours(-1); });
   hold(incMinsBtn, function() { adjMinutes(1); });
   hold(decMinsBtn, function() { adjMinutes(-1); });
 
-  timerDiv.onmouseover = function() { if (!running) showArrows(true); };
+  timerDiv.onmouseover = function() { if (!running && !completed) showArrows(true); };
   timerDiv.onmouseout = function() { showArrows(false); };
   showArrows(false);
   resetTimer();
@@ -49,40 +53,69 @@ function showArrows(show)
 function adjHours(n)
 {
   targetHours = (targetHours + n).mod(100);
+  avoidBothZero();
   resetTimer();
 }
 
 function adjMinutes(n)
 {
   targetMins = (targetMins + n).mod(60);
+  avoidBothZero();
   resetTimer();
+}
+
+function avoidBothZero()
+{
+  if (targetHours == 0 && targetMins == 0)
+  {
+    targetMins = 1;
+  }
 }
 
 function resetTimer()
 {
   timeElem.innerHTML = formatTime(targetHours, targetMins, 0, 0);
+  timeElem.style.color = 'white'; 
+  startStopBtn.innerHTML = "Start";
+  startStopBtn.className = "btn btn-success";
   resetBtn.style.visibility = "hidden";
   running = false;
+  completed = false;
   savedTime = 0;
+  sound.pause();
+}
+
+function stopTimer()
+{
+  startStopBtn.innerHTML = "Start";
+  startStopBtn.className = "btn btn-success";
+  resetBtn.style.visibility = "visible";
+  running = false;
+  savedTime += new Date().getTime() - startTime.getTime();
+}
+
+function startTimer()
+{
+  startTime = new Date();
+  running = true;
+  startStopBtn.innerHTML = "Stop";
+  startStopBtn.className = "btn btn-danger";
+  resetBtn.style.visibility = "hidden";
 }
 
 function updateTimer()
 {
   if (running)
   {
-    running = false;
-    savedTime += new Date().getTime() - startTime.getTime();
-    startStopBtn.innerHTML = "Start";
-    startStopBtn.className = "btn btn-success";
-    resetBtn.style.visibility = "visible";
+    stopTimer();
+  }
+  else if (completed)
+  {
+    resetTimer();
   }
   else
   {
-    startTime = new Date();
-    running = true;
-    startStopBtn.innerHTML = "Stop";
-    startStopBtn.className = "btn btn-danger";
-    resetBtn.style.visibility = "hidden";
+    startTimer();
   }
 }
 
@@ -103,7 +136,7 @@ function calcTime()
   var ms = Math.max(0, targetTime - (now.getTime() - startTime.getTime() + savedTime));
   if (ms == 0)
   {
-    completed();
+    timerFinished();
   } 
 
   var ms_ = Math.floor((ms % 1000) / 10);
@@ -116,12 +149,11 @@ function calcTime()
   return formatTime(h, m, s, ms_);
 }
 
-function completed()
+function timerFinished()
 {
   running = false;
+  completed = true;
   timeElem.style.color = 'red';
-  var sound = new Audio('bleep.mp3');
-  sound.loop = true;
   sound.play();
 }
 
