@@ -2,7 +2,7 @@ var running = false;
 var startTime = -1;
 var savedTime = 0;
 var targetHours = 0;
-var targetMins = 30;
+var targetMins = 1;
 var timerDiv;
 var timeElem;
 var startStopBtn;
@@ -101,6 +101,11 @@ function calcTime()
   var now = new Date();
   var targetTime = targetHours*60*60*1000 + targetMins*60*1000;
   var ms = Math.max(0, targetTime - (now.getTime() - startTime.getTime() + savedTime));
+  if (ms == 0)
+  {
+    completed();
+  } 
+
   var ms_ = Math.floor((ms % 1000) / 10);
   var t = Math.floor(ms / 1000);
   var s = t % 60;
@@ -109,6 +114,15 @@ function calcTime()
   var h = Math.floor(t / 60); 
  
   return formatTime(h, m, s, ms_);
+}
+
+function completed()
+{
+  running = false;
+  timeElem.style.color = 'red';
+  var sound = new Audio('bleep.mp3');
+  sound.loop = true;
+  sound.play();
 }
 
 function formatTime(h, m, s, ms)
