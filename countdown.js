@@ -53,23 +53,22 @@ function showArrows(show)
 function adjHours(n)
 {
   targetHours = (targetHours + n).mod(100);
-  avoidBothZero();
+  if (targetHours == 0 && targetMins == 0)
+  {
+    targetMins = 1;
+  }
+
   resetTimer();
 }
 
 function adjMinutes(n)
 {
   targetMins = (targetMins + n).mod(60);
-  avoidBothZero();
-  resetTimer();
-}
-
-function avoidBothZero()
-{
   if (targetHours == 0 && targetMins == 0)
   {
-    targetMins = 1;
+    targetMins = n > 0 ? 1 : 59;
   }
+  resetTimer();
 }
 
 function resetTimer()
