@@ -156,14 +156,6 @@ function timerFinished()
   sound.play();
 }
 
-function formatTime(h, m, s, ms)
-{
-  return formatNum(h) + ":" +
-         formatNum(m) + ":" + 
-         formatNum(s) + "." +
-         formatNum(ms);
-}
-
 function hold(btn, action) {
     var t;
     var repeat = function () {

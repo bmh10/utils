@@ -65,12 +65,3 @@ function calcTime()
  
   return formatTime(h, m, s, ms_);
 }
-
-function formatTime(h, m, s, ms)
-{
-  return formatNum(h) + ":" +
-         formatNum(m) + ":" + 
-         formatNum(s) + "." +
-         formatNum(ms);
-}
-
