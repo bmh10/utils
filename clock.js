@@ -19,8 +19,3 @@ function formatDate(now)
          formatNum(now.getMonth()+1) + "/" + 
          now.getFullYear();
 }
-
-function formatNum(n)
-{
-  return (n < 10) ? "0" + n : n;
-}

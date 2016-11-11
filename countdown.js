@@ -164,11 +164,6 @@ function formatTime(h, m, s, ms)
          formatNum(ms);
 }
 
-function formatNum(n)
-{
-  return (n < 10) ? "0" + n : n;
-}
-
 function hold(btn, action) {
     var t;
     var repeat = function () {
