@@ -1,3 +1,6 @@
+var val = 0;
+var op;
+
 function init()
 {
   var btns = document.getElementsByClassName('calc-btn');
@@ -10,12 +13,31 @@ function init()
 function assignOnClick(btns, i)
 {
   var param = btns[i].innerHTML;
-  console.log(param)
   btns[i].onclick = function() { calc(param); }
 }
 
 function calc(n)
 {
-  console.log(n);
-  document.getElementById('solution').innerHTML = n;
+  switch (n)
+  {
+    case '+': op = add; break;
+    case '-': op = sub; break;
+    case 'x': op = mul; break;
+    case '/': op = div; break;
+    default:
+      if (op === undefined)
+      {
+        val = parseInt(n);
+      }
+      else
+      {
+        val = op(val, parseInt(n));
+      }
+  }
+  document.getElementById('solution').innerHTML = val;
 }
+
+function add(a, b) { return a + b; }
+function sub(a, b) { return a - b; }
+function div(a, b) { return a / b; }
+function mul(a, b) { return a * b; }
