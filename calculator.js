@@ -27,15 +27,20 @@ function calc(n)
     default:
       if (op === undefined)
       {
-        val += n;
+        val = trimZeros(val + n);
       }
       else
       {
-        val = op(val, parseInt(n));
+        val = op(parseInt(val), parseInt(n)).toString();
         op = undefined;
       }
   }
   document.getElementById('solution').innerHTML = val;
+}
+
+function trimZeros(str)
+{
+  return parseInt(str).toString();
 }
 
 function add(a, b) { return a + b; }
