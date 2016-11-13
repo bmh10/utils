@@ -27,11 +27,12 @@ function calc(n)
     default:
       if (op === undefined)
       {
-        val = parseInt(n);
+        val += n;
       }
       else
       {
         val = op(val, parseInt(n));
+        op = undefined;
       }
   }
   document.getElementById('solution').innerHTML = val;
