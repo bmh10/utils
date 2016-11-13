@@ -5,33 +5,35 @@
     <script type="text/javascript" src="calculator.js"></script>
     <link rel="stylesheet" type="text/css" href="main.css">
   </head>
-  <body onload="updateTime()">
+  <body onload="init()">
     <div class="centered panel panel-default">
-      <div class="panel-heading">0</div>
+      <div class="panel-heading">
+        <h4 id="solution">0</h4>
+      </div>
       <div class="panel-body">
        <div>
-	 <button class="btn btn-default calc-btn">1</button> 
-	 <button class="btn btn-default calc-btn">2</button> 
-	 <button class="btn btn-default calc-btn">3</button>
-	 <button class="btn btn-default calc-btn">+</button>
+	 <button id="btn1" class="btn btn-default calc-btn">1</button> 
+	 <button id="btn2" class="btn btn-default calc-btn">2</button> 
+	 <button id="btn3" class="btn btn-default calc-btn">3</button>
+	 <button id="btn+" class="btn btn-default calc-btn">+</button>
        <div/>
        <div>
-	 <button class="btn btn-default calc-btn">4</button> 
-	 <button class="btn btn-default calc-btn">5</button> 
-	 <button class="btn btn-default calc-btn">6</button> 
-	 <button class="btn btn-default calc-btn">-</button>
+	 <button id="btn4"class="btn btn-default calc-btn">4</button> 
+	 <button id="btn5" class="btn btn-default calc-btn">5</button> 
+	 <button id="btn6" class="btn btn-default calc-btn">6</button> 
+	 <button id="btn-" class="btn btn-default calc-btn">-</button>
        </div>
        <div> 
-	 <button class="btn btn-default calc-btn">7</button> 
-	 <button class="btn btn-default calc-btn">8</button> 
-	 <button class="btn btn-default calc-btn">9</button> 
-	 <button class="btn btn-default calc-btn">x</button>
+	 <button id="btn7" class="btn btn-default calc-btn">7</button> 
+	 <button id="btn8" class="btn btn-default calc-btn">8</button> 
+	 <button id="btn9" class="btn btn-default calc-btn">9</button> 
+	 <button id="btnx" class="btn btn-default calc-btn">x</button>
        </div>
        <div>
-	 <button class="btn btn-default calc-btn">.</button> 
-	 <button class="btn btn-default calc-btn">0</button> 
-	 <button class="btn btn-default calc-btn">=</button> 
-	 <button class="btn btn-default calc-btn">/</button> 
+	 <button id="btn." class="btn btn-default calc-btn">.</button> 
+	 <button id="btn0" class="btn btn-default calc-btn">0</button> 
+	 <button id="btn=" class="btn btn-default calc-btn">=</button> 
+	 <button id="btn/" class="btn btn-default calc-btn">/</button> 
        </div>
       </div>
     </div>
