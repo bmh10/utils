@@ -24,6 +24,9 @@ function calc(n)
     case '-': op = sub; break;
     case 'x': op = mul; break;
     case '/': op = div; break;
+    case '=': 
+      // TODO
+      break;
     default:
       if (op === undefined)
       {
