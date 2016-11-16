@@ -1,4 +1,5 @@
-var val = 0;
+var val1 = 0;
+var val2 = 0;
 var op;
 
 function init()
@@ -26,16 +27,17 @@ function calc(n)
     case '/': op = div; break;
     case '=': 
       // TODO
+      val = op(parseInt(val1), parseInt(val2)).toString();
+      op = undefined;
       break;
     default:
       if (op === undefined)
       {
-        val = trimZeros(val + n);
+        val1 = trimZeros(val1 + n);
       }
       else
       {
-        val = op(parseInt(val), parseInt(n)).toString();
-        op = undefined;
+        val2 = trimZeros(val2 + n);
       }
   }
   document.getElementById('solution').innerHTML = val;
