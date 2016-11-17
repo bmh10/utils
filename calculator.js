@@ -26,20 +26,20 @@ function calc(n)
     case 'x': op = mul; break;
     case '/': op = div; break;
     case '=': 
-      val1 = op(parseInt(val1), parseInt(val2)).toString();
+      val1 = op(parseFloat(val1), parseFloat(val2)).toString();
       show(val1);
-      val2  = 0;
+      val2 = 0;
       op = undefined;
       break;
     default:
       if (op === undefined)
       {
-        val1 = trimZeros(val1 + n);
+        val1 = appendAndTrimZeros(val1, n);
         show(val1);
       }
       else
       {
-        val2 = trimZeros(val2 + n);
+        val2 = appendAndTrimZeros(val2, n);
         show(val2);
       }
   }
@@ -50,9 +50,10 @@ function show(n)
   document.getElementById('solution').innerHTML = n;
 }
 
-function trimZeros(str)
-{
-  return parseInt(str).toString();
+function appendAndTrimZeros(str, n)
+{ 
+  if (n === '.' && !str.includes('.')) return str + ".";
+  return parseFloat(str + n).toString();
 }
 
 function add(a, b) { return a + b; }
