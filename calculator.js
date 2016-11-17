@@ -26,21 +26,28 @@ function calc(n)
     case 'x': op = mul; break;
     case '/': op = div; break;
     case '=': 
-      // TODO
-      val = op(parseInt(val1), parseInt(val2)).toString();
+      val1 = op(parseInt(val1), parseInt(val2)).toString();
+      show(val1);
+      val2  = 0;
       op = undefined;
       break;
     default:
       if (op === undefined)
       {
         val1 = trimZeros(val1 + n);
+        show(val1);
       }
       else
       {
         val2 = trimZeros(val2 + n);
+        show(val2);
       }
   }
-  document.getElementById('solution').innerHTML = val;
+}
+
+function show(n)
+{
+  document.getElementById('solution').innerHTML = n;
 }
 
 function trimZeros(str)
