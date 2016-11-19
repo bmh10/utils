@@ -26,7 +26,7 @@ function calc(n)
     case 'x': op = mul; break;
     case '/': op = div; break;
     case '=': 
-      val1 = op(parseFloat(val1), parseFloat(val2)).toString();
+      val1 = trim(op(parseFloat(val1), parseFloat(val2))).toString();
       show(val1);
       val2 = 0;
       op = undefined;
@@ -48,6 +48,11 @@ function calc(n)
 function show(n)
 {
   document.getElementById('solution').innerHTML = n;
+}
+
+function trim(n)
+{
+  return parseFloat(n.toFixed(4));
 }
 
 function appendAndTrimZeros(str, n)
