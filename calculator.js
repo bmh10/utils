@@ -9,6 +9,10 @@ function init()
   {
     assignOnClick(btns, i);
   }
+
+  document.onkeypress = function(e) {
+    calc(e.key);
+  }
 }
 
 function assignOnClick(btns, i)
@@ -23,7 +27,7 @@ function calc(n)
   {
     case '+': op = add; break;
     case '-': op = sub; break;
-    case 'x': op = mul; break;
+    case '*': op = mul; break;
     case '/': op = div; break;
     case '=': 
       val1 = trim(op(parseFloat(val1), parseFloat(val2))).toString();
