@@ -11,7 +11,11 @@ function init()
   }
 
   document.onkeypress = function(e) {
-    calc(e.key);
+    e = e || window.event;
+    var key = e.key;
+    if (key === 'Delete') reset();
+    if (key === 'Enter') key = '=';
+    calc(key);
   }
 }
 
@@ -19,6 +23,14 @@ function assignOnClick(btns, i)
 {
   var param = btns[i].innerHTML;
   btns[i].onclick = function() { calc(param); }
+}
+
+function reset()
+{
+  val1 = 0;
+  val2 = 0;
+  op = undefined;
+  show(val1);
 }
 
 function calc(n)
