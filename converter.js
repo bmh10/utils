@@ -1,16 +1,19 @@
-
 function init()
 {
-  var categories = ["Length", "Time", "Volume", "Currency"];
+  var categories = {
+    'Length' : ["mm", "cm", "m", "km"],
+    'Time' : [],
+    'Volume' : [],
+    'Currency' : []
+  };
   initDropdowns();
-  populateDropdown('category-dropdown', categories, 'category');
+  populateDropdown('category-dropdown', Object.keys(categories), 'category');
 
   var categories = document.getElementsByClassName('category');
   for (var i = 0; i < categories.length; i++)
   {
     assignOnClick(categories, i);
   }
-
 }
 
 function assignOnClick(categories, i)
