@@ -1,6 +1,8 @@
+var categories = {};
+
 function init()
 {
-  var categories = {
+  categories = {
     'Length' : ["mm", "cm", "m", "km"],
     'Time' : [],
     'Volume' : [],
@@ -9,19 +11,20 @@ function init()
   initDropdowns();
   populateDropdown('category-dropdown', Object.keys(categories), 'category');
 
-  var categories = document.getElementsByClassName('category');
-  for (var i = 0; i < categories.length; i++)
+  var categoryElems = document.getElementsByClassName('category');
+  for (var i = 0; i < categoryElems.length; i++)
   {
-    assignOnClick(categories, i);
+    assignOnClick(categoryElems, i);
   }
 }
 
-function assignOnClick(categories, i)
+function assignOnClick(categoryElems, i)
 {
-  var catName = categories[i].innerHTML; 
-  categories[i].onclick = function()
+  var catName = categoryElems[i].innerHTML; 
+  categoryElems[i].onclick = function()
   {
     document.getElementById('selected-category').innerHTML = catName;
+    populateDropdown('unit-dropdown', categories[catName], 'unit');
   }
 }
 
