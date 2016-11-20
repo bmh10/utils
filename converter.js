@@ -13,6 +13,7 @@ function init()
   initOnClick('category', function(selected) 
   {
       populateDropdown('unit-dropdown', categories[selected], 'unit');
+      initOnClick('unit', function(selected) {});
   });
 
 }
