@@ -4,27 +4,31 @@ function init()
 {
   categories = {
     'Length' : ["mm", "cm", "m", "km"],
-    'Time' : [],
+    'Time' : ["ns", "ms", "s", "mins", "hours"],
     'Volume' : [],
-    'Currency' : []
+    'Currency' : ["£", "$"]
   };
   initDropdowns();
   populateDropdown('category-dropdown', Object.keys(categories), 'category');
-
-  var categoryElems = document.getElementsByClassName('category');
-  for (var i = 0; i < categoryElems.length; i++)
+  initOnClick('category', function(selected) 
   {
-    assignOnClick(categoryElems, i);
-  }
+      populateDropdown('unit-dropdown', categories[selected], 'unit');
+  });
+
 }
 
-function assignOnClick(categoryElems, i)
+function initOnClick(clazz, func)
 {
-  var catName = categoryElems[i].innerHTML; 
-  categoryElems[i].onclick = function()
+  var elems = document.getElementsByClassName(clazz);
+  for (var i = 0; i < elems.length; i++)
   {
-    document.getElementById('selected-category').innerHTML = catName;
-    populateDropdown('unit-dropdown', categories[catName], 'unit');
+    elems[i].onclick = function()
+    {
+      var target = event.target || event.srcElement;
+      var selected = target.innerHTML;
+      document.getElementById('selected-' + clazz).innerHTML = selected;
+      func(selected);
+    }
   }
 }
 
