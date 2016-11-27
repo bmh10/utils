@@ -27,7 +27,7 @@ function initOnClick(clazz, func)
     {
       var target = event.target || event.srcElement;
       var selected = target.innerHTML;
-      document.getElementById('selected-' + clazz).innerHTML = selected;
+      target.parentElement.parentElement.parentElement.getElementsByClassName('selected-' + clazz)[0].innerHTML = selected;
       func(selected);
     }
   }
