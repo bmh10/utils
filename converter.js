@@ -33,13 +33,17 @@ function initOnClick(clazz, func)
   }
 }
 
-function populateDropdown(dropdownId, items, clazz)
+function populateDropdown(dropdownClass, items, clazz)
 {
-  var dropdown = document.getElementById(dropdownId);
-  dropdown.innerHTML = "";
-  for (var i = 0; i < items.length; i++)
+  var dropdowns = document.getElementsByClassName(dropdownClass);
+  for (var n = 0; n < dropdowns.length; n++)
   {
-    dropdown.innerHTML +=
-      '<li><a href="#" class="' + clazz  + '">' + items[i]  + '</a></li>';
+    var dropdown = dropdowns[n];
+    dropdown.innerHTML = "";
+    for (var i = 0; i < items.length; i++)
+    {
+      dropdown.innerHTML +=
+	'<li><a href="#" class="' + clazz  + '">' + items[i]  + '</a></li>';
+    }
   }
 }
