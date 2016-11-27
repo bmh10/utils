@@ -47,3 +47,13 @@ function populateDropdown(dropdownClass, items, clazz)
     }
   }
 }
+
+var multipliers = {}
+multipliers["m"]["cm"] = 100;
+
+function convert(category, leftVal, leftUnit, rightVal, rightUnit)
+{
+  var m = multipliers[leftUnit][rightUnit]; 
+  rightVal = leftVal * m;
+  leftVal = rightVal / m;
+}
