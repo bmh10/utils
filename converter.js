@@ -5,7 +5,7 @@ function init()
   categories = {
     'Length' : ["mm", "cm", "m", "km"],
     'Time' : ["ns", "ms", "s", "mins", "hours"],
-    'Volume' : [],
+    'Volume' : ["l", "ml"],
     'Currency' : ["£", "$"]
   };
   initDropdowns();
