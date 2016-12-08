@@ -16,6 +16,8 @@ function init()
       initOnClick('unit', function(selected) {});
   });
 
+  var leftInput = document.getElementById("left-input");
+  leftInput.addEventListener("focusout", function() { alert("left"); });
 }
 
 function initOnClick(clazz, func)
