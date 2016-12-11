@@ -17,7 +17,13 @@ function init()
   });
 
   var leftInput = document.getElementById("left-input");
-  leftInput.addEventListener("focusout", function() { alert("left"); });
+  leftInput.addEventListener("focusout", function() {
+    var leftVal = "10";
+    var leftUnit = "cm";
+    var rightVal = "20";
+    var rightUnit = "m";
+    convert(leftVal, leftUnit, rightVal, rightUnit);
+   });
 }
 
 function initOnClick(clazz, func)
@@ -53,8 +59,9 @@ function populateDropdown(dropdownClass, items, clazz)
 var multipliers = {}
 multipliers["m"]["cm"] = 100;
 
-function convert(category, leftVal, leftUnit, rightVal, rightUnit)
+function convert(leftVal, leftUnit, rightVal, rightUnit)
 {
+  console.log("leftVal:" + leftVal + " leftUnit:" + leftUnit + " rightVal: " + rightVal + " rightUnit: " + rightUnit);
   var m = multipliers[leftUnit][rightUnit]; 
   rightVal = leftVal * m;
   leftVal = rightVal / m;
