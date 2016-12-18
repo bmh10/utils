@@ -16,13 +16,14 @@ function init()
       initOnClick('unit', function(selected) {});
   });
 
-  var leftInput = document.getElementById("left-input");
-  leftInput.addEventListener("focusout", function() {
-    var leftVal = "10";
-    var leftUnit = "cm";
-    var rightVal = "20";
-    var rightUnit = "m";
-    convert(leftVal, leftUnit, rightVal, rightUnit);
+
+  var leftInput = document.getElementById('left-input');
+  leftInput.addEventListener('focusout', function() {
+    var lVal = document.getElementById('left-input').value;
+    var lUnit = document.getElementById('left-unit').innerHTML;
+    var rUnit = document.getElementById('right-unit').innerHTML;
+    var rVal = convert(lVal, lUnit, rUnit);
+    document.getElementById('right-input').value = rVal;
    });
 }
 
@@ -56,13 +57,21 @@ function populateDropdown(dropdownClass, items, clazz)
   }
 }
 
-var multipliers = {}
-multipliers["m"]["cm"] = 100;
+var multipliers = { 'm' : {'cm' : 100 }};
 
-function convert(leftVal, leftUnit, rightVal, rightUnit)
+function convert(val, unit, targetUnit)
 {
-  console.log("leftVal:" + leftVal + " leftUnit:" + leftUnit + " rightVal: " + rightVal + " rightUnit: " + rightUnit);
-  var m = multipliers[leftUnit][rightUnit]; 
-  rightVal = leftVal * m;
-  leftVal = rightVal / m;
+  console.log("val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
+  if (unit === targetUnit)
+  {
+    return val;
+  }
+ 
+  var lookup = multipliers[unit];
+  if (lookup !== undefined)
+  {
+    return val * lookup[targetUnit];
+  }
+  
+  return "";
 }
