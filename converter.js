@@ -16,14 +16,19 @@ function init()
       initOnClick('unit', function(selected) {});
   });
 
+  initConversionListener('left-input', 'left-unit', 'right-input', 'right-unit');
+  initConversionListener('right-input', 'right-unit', 'left-input', 'left-unit');
+}
 
-  var leftInput = document.getElementById('left-input');
-  leftInput.addEventListener('focusout', function() {
-    var lVal = document.getElementById('left-input').value;
-    var lUnit = document.getElementById('left-unit').innerHTML;
-    var rUnit = document.getElementById('right-unit').innerHTML;
-    var rVal = convert(lVal, lUnit, rUnit);
-    document.getElementById('right-input').value = rVal;
+function initConversionListener(srcInput, srcUnit, targetInput, targetUnit)
+{
+  var inputObj = document.getElementById(srcInput);
+  inputObj.addEventListener('focusout', function() {
+    var val = document.getElementById(srcInput).value;
+    var unit = document.getElementById(srcUnit).innerHTML;
+    var tUnit = document.getElementById(targetUnit).innerHTML;
+    var tVal = convert(val, unit, tUnit);
+    document.getElementById(targetInput).value = tVal;
    });
 }
 
@@ -57,7 +62,11 @@ function populateDropdown(dropdownClass, items, clazz)
   }
 }
 
-var multipliers = { 'm' : {'cm' : 100 }};
+var multipliers = { 'm' : 
+                          { 'cm' : 100,
+                            'mm' : 1000 
+                          }
+                  };
 
 function convert(val, unit, targetUnit)
 {
