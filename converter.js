@@ -66,10 +66,9 @@ function populateDropdown(dropdownClass, items, clazz)
   }
 }
 
-var multipliers = { 'm' : 
-                          { 'cm' : 100,
-                            'mm' : 1000 
-                          }
+var multipliers = { 'km' : { 'm' : 1000 },
+                    'm'  : { 'cm' : 100 },
+                    'cm' : { 'mm' : 10  } 
                   };
 
 function convert(val, unit, targetUnit)
