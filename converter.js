@@ -77,10 +77,16 @@ function convert(val, unit, targetUnit)
   }
  
   var lookup = multipliers[unit];
-  if (lookup !== undefined)
+  if (lookup == undefined)
   {
-    return val * lookup[targetUnit];
+    lookup = multipliers[targetUnit];
+    if (lookup == undefined)
+    {
+      return "";
+    }
+
+    return val / lookup[unit]; 
   }
-  
-  return "";
+
+  return val * lookup[targetUnit];
 }
