@@ -21,6 +21,14 @@ var conversionTable =
                    {'unit' : 'millisecond', 'mult' : 1000 },
                    {'unit' : 'microsecond', 'mult' : 1000 },
                    {'unit' : 'nanosecond',  'mult' : 1000 }],
+                  'Digital Storage' :
+                  [{'unit' : 'Petabyte', 'mult' : 1    },
+                   {'unit' : 'Terabyte', 'mult' : 1024 },
+                   {'unit' : 'Gigabyte', 'mult' : 1024 },
+                   {'unit' : 'Megabyte', 'mult' : 1024 },
+                   {'unit' : 'Kilobyte', 'mult' : 1024 },
+                   {'unit' : 'Byte',     'mult' : 1024 },
+                   {'unit' : 'Bit',       'mult' : 8   }],
                   'Volume' : [],
                   'Currency' : []              
                 };
