@@ -127,7 +127,7 @@ function convert(val, unit, targetUnit, category)
     m = 1 / getMultiplier(targetUnit, unit, category);
   }
 
-  return m * val;
+  return (m * val).toFixed(3);
 }
 
 function getMultiplier(unit, targetUnit, category)
