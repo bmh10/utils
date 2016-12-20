@@ -21,7 +21,7 @@ function init()
   initConversionListener('right-input', 'right-input', 'right-unit', 'left-input', 'left-unit');
  
   initConversionListener('left-dropdown', 'left-input', 'left-unit', 'right-input', 'right-unit');
-  initConversionListener('right-dropdown', 'right-input', 'right-unit', 'left-input', 'left-unit');
+  //initConversionListener('right-dropdown', 'right-input', 'right-unit', 'left-input', 'left-unit');
 }
 
 function initConversionListener(listenerObj, srcInput, srcUnit, targetInput, targetUnit)
@@ -66,30 +66,39 @@ function populateDropdown(dropdownClass, items, clazz)
   }
 }
 
-var multipliers = { 'km' : { 'm' : 1000 },
-                    'm'  : { 'cm' : 100 },
-                    'cm' : { 'mm' : 10  } 
-                  };
+var distMults = [{'unit' : 'km', 'mult' : 1    },
+                 {'unit' : 'm',  'mult' : 1000 },
+                 {'unit' : 'cm', 'mult' : 100  },
+                 {'unit' : 'mm', 'mult' : 10   }];
 
 function convert(val, unit, targetUnit)
 {
   console.log("val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
-  if (unit === targetUnit)
+  var m = getMultiplier(unit, targetUnit);
+  return m * val;
+}
+
+function getMultiplier(unit, targetUnit)
+{
+  var mult = 1;
+  var s = false;
+
+  if (unit === targetUnit) return 1;
+
+  for (var i = 0; i < distMults.length; i++)
   {
-    return val;
-  }
- 
-  var lookup = multipliers[unit];
-  if (lookup == undefined)
-  {
-    lookup = multipliers[targetUnit];
-    if (lookup == undefined)
+    var d = distMults[i];
+    if (s)
     {
-      return "";
+      mult *= d.mult;
+      if (d.unit === targetUnit)
+      {
+        return mult;
+      }
     }
 
-    return val / lookup[unit]; 
+    if (d.unit === unit) s = true;
   }
 
-  return val * lookup[targetUnit];
+  return -1;
 }
