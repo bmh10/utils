@@ -1,5 +1,3 @@
-var categories = {};
-
 var conversionTable = 
                 { 'Length' : 
                   [{'unit' : 'mile', 'mult' : 1        },
@@ -27,26 +25,15 @@ var conversionTable =
                   'Currency' : []              
                 };
 
-function getUnit(x)
-{
-  return x.unit;
-}
-
 function init()
 {
-  categories = {
-    'Length'   : conversionTable.Length.map(getUnit),
-    'Time'     : conversionTable.Time.map(getUnit),
-    'Volume'   : conversionTable.Volume.map(getUnit),
-    'Currency' : conversionTable.Currency.map(getUnit)
-  };
   initDropdowns();
-  populateDropdown('category-dropdown', Object.keys(categories), 'category');
+  populateDropdown('category-dropdown', Object.keys(conversionTable), 'category');
   initOnClick('category', function(selected) 
   {
       document.getElementById('left-unit').innerHTML = "&nbsp;";
       document.getElementById('right-unit').innerHTML = "&nbsp;";
-      populateDropdown('unit-dropdown', categories[selected], 'unit');
+      populateDropdown('unit-dropdown', conversionTable[selected].map((x) => x.unit), 'unit');
       initOnClick('unit', function(selected) {});
   });
 
