@@ -3,7 +3,7 @@ var categories = {};
 function init()
 {
   categories = {
-    'Length' : ["mile", "km", "m", "yd", "ft", "in", "cm", "mm"],
+    'Length' : ["mile", "kilometer", "meter", "yard", "feet", "inch", "centimeter", "millimeter"],
     'Time' : ["century", "decade", "year", "month", "week", "day", "hour", "minute", "second", "millisecond", "microsecond", "nanosecond"],
     'Volume' : ["l", "ml"],
     'Currency' : ["£", "$"]
@@ -72,13 +72,13 @@ function populateDropdown(dropdownClass, items, clazz)
 var conversionTable = 
                 { 'Length' : 
                   [{'unit' : 'mile', 'mult' : 1        },
-                   {'unit' : 'km',   'mult' : 1.609344  },
-                   {'unit' : 'm',    'mult' : 1000     },
-                   {'unit' : 'yd',    'mult' : 1.09361329834 },
-                   {'unit' : 'ft',    'mult' : 3       },
-                   {'unit' : 'in',    'mult' : 12      },
-                   {'unit' : 'cm',   'mult' : 2.54     } ,
-                   {'unit' : 'mm',   'mult' : 10       }],
+                   {'unit' : 'kilometer',   'mult' : 1.609344  },
+                   {'unit' : 'meter',    'mult' : 1000     },
+                   {'unit' : 'yard',    'mult' : 1.09361329834 },
+                   {'unit' : 'feet',    'mult' : 3       },
+                   {'unit' : 'inch',    'mult' : 12      },
+                   {'unit' : 'centimeter',   'mult' : 2.54     } ,
+                   {'unit' : 'millimeter',   'mult' : 10       }],
                   'Time' :
                   [{'unit' : 'century',     'mult' : 1  },
                    {'unit' : 'decade',      'mult' : 10 },
