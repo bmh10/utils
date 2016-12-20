@@ -1,12 +1,44 @@
 var categories = {};
 
+var conversionTable = 
+                { 'Length' : 
+                  [{'unit' : 'mile', 'mult' : 1        },
+                   {'unit' : 'kilometer',   'mult' : 1.609344  },
+                   {'unit' : 'meter',    'mult' : 1000     },
+                   {'unit' : 'yard',    'mult' : 1.09361329834 },
+                   {'unit' : 'feet',    'mult' : 3       },
+                   {'unit' : 'inch',    'mult' : 12      },
+                   {'unit' : 'centimeter',   'mult' : 2.54     } ,
+                   {'unit' : 'millimeter',   'mult' : 10       }],
+                  'Time' :
+                  [{'unit' : 'century',     'mult' : 1  },
+                   {'unit' : 'decade',      'mult' : 10 },
+                   {'unit' : 'year',        'mult' : 10 },
+                   {'unit' : 'month',       'mult' : 12 },
+                   {'unit' : 'week',        'mult' : 52/12 },
+                   {'unit' : 'day',         'mult' : 7 },
+                   {'unit' : 'hour',        'mult' : 24 },
+                   {'unit' : 'minute',      'mult' : 60 },
+                   {'unit' : 'second',      'mult' : 60 },
+                   {'unit' : 'millisecond', 'mult' : 1000 },
+                   {'unit' : 'microsecond', 'mult' : 1000 },
+                   {'unit' : 'nanosecond',  'mult' : 1000 }],
+                  'Volume' : [],
+                  'Currency' : []              
+                };
+
+function getUnit(x)
+{
+  return x.unit;
+}
+
 function init()
 {
   categories = {
-    'Length' : ["mile", "kilometer", "meter", "yard", "feet", "inch", "centimeter", "millimeter"],
-    'Time' : ["century", "decade", "year", "month", "week", "day", "hour", "minute", "second", "millisecond", "microsecond", "nanosecond"],
-    'Volume' : ["l", "ml"],
-    'Currency' : ["£", "$"]
+    'Length'   : conversionTable.Length.map(getUnit),
+    'Time'     : conversionTable.Time.map(getUnit),
+    'Volume'   : conversionTable.Volume.map(getUnit),
+    'Currency' : conversionTable.Currency.map(getUnit)
   };
   initDropdowns();
   populateDropdown('category-dropdown', Object.keys(categories), 'category');
@@ -69,30 +101,6 @@ function populateDropdown(dropdownClass, items, clazz)
   }
 }
 
-var conversionTable = 
-                { 'Length' : 
-                  [{'unit' : 'mile', 'mult' : 1        },
-                   {'unit' : 'kilometer',   'mult' : 1.609344  },
-                   {'unit' : 'meter',    'mult' : 1000     },
-                   {'unit' : 'yard',    'mult' : 1.09361329834 },
-                   {'unit' : 'feet',    'mult' : 3       },
-                   {'unit' : 'inch',    'mult' : 12      },
-                   {'unit' : 'centimeter',   'mult' : 2.54     } ,
-                   {'unit' : 'millimeter',   'mult' : 10       }],
-                  'Time' :
-                  [{'unit' : 'century',     'mult' : 1  },
-                   {'unit' : 'decade',      'mult' : 10 },
-                   {'unit' : 'year',        'mult' : 10 },
-                   {'unit' : 'month',       'mult' : 12 },
-                   {'unit' : 'week',        'mult' : 52/12 },
-                   {'unit' : 'day',         'mult' : 7 },
-                   {'unit' : 'hour',        'mult' : 24 },
-                   {'unit' : 'minute',      'mult' : 60 },
-                   {'unit' : 'second',      'mult' : 60 },
-                   {'unit' : 'millisecond', 'mult' : 1000 },
-                   {'unit' : 'microsecond', 'mult' : 1000 },
-                   {'unit' : 'nanosecond',  'mult' : 1000 }]
-                };
 
 function convert(val, unit, targetUnit, category)
 {
