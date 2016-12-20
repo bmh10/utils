@@ -4,7 +4,7 @@ function init()
 {
   categories = {
     'Length' : ["mile", "km", "m", "yd", "ft", "in", "cm", "mm"],
-    'Time' : ["ns", "ms", "s", "mins", "hours"],
+    'Time' : ["century", "decade", "year", "month", "week", "day", "hour", "minute", "second", "millisecond", "microsecond", "nanosecond"],
     'Volume' : ["l", "ml"],
     'Currency' : ["£", "$"]
   };
@@ -80,11 +80,18 @@ var conversionTable =
                    {'unit' : 'cm',   'mult' : 2.54     } ,
                    {'unit' : 'mm',   'mult' : 10       }],
                   'Time' :
-                  [{'unit' : 'hours', 'mult' : 1  },
-                   {'unit' : 'mins',  'mult' : 60 },
-                   {'unit' : 's',     'mult' : 60 },
-                   {'unit' : 'ms',    'mult' : 1000 },
-                   {'unit' : 'ns',    'mult' : 1000000 }]
+                  [{'unit' : 'century',     'mult' : 1  },
+                   {'unit' : 'decade',      'mult' : 10 },
+                   {'unit' : 'year',        'mult' : 10 },
+                   {'unit' : 'month',       'mult' : 12 },
+                   {'unit' : 'week',        'mult' : 52/12 },
+                   {'unit' : 'day',         'mult' : 7 },
+                   {'unit' : 'hour',        'mult' : 24 },
+                   {'unit' : 'minute',      'mult' : 60 },
+                   {'unit' : 'second',      'mult' : 60 },
+                   {'unit' : 'millisecond', 'mult' : 1000 },
+                   {'unit' : 'microsecond', 'mult' : 1000 },
+                   {'unit' : 'nanosecond',  'mult' : 1000 }]
                 };
 
 function convert(val, unit, targetUnit, category)
