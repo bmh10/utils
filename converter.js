@@ -50,6 +50,11 @@ var conversionTable =
                    {'unit' : 'miles per hour',     'mult' : 1.15078 },
                    {'unit' : 'foot per second',    'mult' : 1.46667 },
                    {'unit' : 'kilometre per hour', 'mult' : 1.09728 }],
+                  'Pressure' : 
+                  [{'unit' : 'atmosphere', 'mult' : 1 },
+                   {'unit' : 'bar',        'mult' : 1.01325 },
+                   {'unit' : 'torr',       'mult' : 750.062 },
+                   {'unit' : 'pascal',     'mult' : 133.322 }],
                   'Volume' : [],
                   'Currency' : []              
                 };
