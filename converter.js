@@ -1,13 +1,13 @@
 var conversionTable = 
                 { 'Length' : 
                   [{'unit' : 'mile', 'mult' : 1        },
-                   {'unit' : 'kilometer',   'mult' : 1.609344  },
-                   {'unit' : 'meter',    'mult' : 1000     },
+                   {'unit' : 'kilometre',   'mult' : 1.609344  },
+                   {'unit' : 'metre',    'mult' : 1000     },
                    {'unit' : 'yard',    'mult' : 1.09361329834 },
                    {'unit' : 'feet',    'mult' : 3       },
                    {'unit' : 'inch',    'mult' : 12      },
-                   {'unit' : 'centimeter',   'mult' : 2.54     } ,
-                   {'unit' : 'millimeter',   'mult' : 10       }],
+                   {'unit' : 'centimetre',   'mult' : 2.54     } ,
+                   {'unit' : 'millimetre',   'mult' : 10       }],
                   'Time' :
                   [{'unit' : 'century',     'mult' : 1  },
                    {'unit' : 'decade',      'mult' : 10 },
@@ -40,6 +40,16 @@ var conversionTable =
                    {'unit' : 'gram',           'mult' : 28.3495 },
                    {'unit' : 'milligram',      'mult' : 1000    },
                    {'unit' : 'microgram',      'mult' : 1000    }],
+                  'Temperature' : // TODO: need new method for temp
+                  [{'unit' : 'celsius',    'mult' : 1 },
+                   {'unit' : 'fahrenheit', 'mult' : 1 },
+                   {'unit' : 'celsius',    'mult' : 1 }],
+                  'Speed' :
+                  [{'unit' : 'metre per second',   'mult' : 1 },
+                   {'unit' : 'knot',               'mult' : 1.94384 },
+                   {'unit' : 'miles per hour',     'mult' : 1.15078 },
+                   {'unit' : 'foot per second',    'mult' : 1.46667 },
+                   {'unit' : 'kilometre per hour', 'mult' : 1.09728 }],
                   'Volume' : [],
                   'Currency' : []              
                 };
