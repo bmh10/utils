@@ -75,6 +75,11 @@ function convert(val, unit, targetUnit)
 {
   console.log("val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
   var m = getMultiplier(unit, targetUnit);
+  if (m === 0)
+  {
+    m = 1 / getMultiplier(targetUnit, unit);
+  }
+
   return m * val;
 }
 
@@ -100,5 +105,5 @@ function getMultiplier(unit, targetUnit)
     if (d.unit === unit) s = true;
   }
 
-  return -1;
+  return 0;
 }
