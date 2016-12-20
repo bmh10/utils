@@ -74,7 +74,11 @@ var conversionTable =
                    {'unit' : 'cm', 'mult' : 100  },
                    {'unit' : 'mm', 'mult' : 10   }],
                   'Time' :
-                   []
+                  [{'unit' : 'hours', 'mult' : 1  },
+                   {'unit' : 'mins',  'mult' : 60 },
+                   {'unit' : 's',     'mult' : 60 },
+                   {'unit' : 'ms',    'mult' : 1000 },
+                   {'unit' : 'ns',    'mult' : 1000000 }]
                 };
 
 function convert(val, unit, targetUnit, category)
