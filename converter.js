@@ -3,7 +3,7 @@ var categories = {};
 function init()
 {
   categories = {
-    'Length' : ["mm", "cm", "m", "km"],
+    'Length' : ["mile", "km", "m", "yd", "cm", "mm"],
     'Time' : ["ns", "ms", "s", "mins", "hours"],
     'Volume' : ["l", "ml"],
     'Currency' : ["£", "$"]
@@ -69,10 +69,12 @@ function populateDropdown(dropdownClass, items, clazz)
 
 var conversionTable = 
                 { 'Length' : 
-                  [{'unit' : 'km', 'mult' : 1    },
-                   {'unit' : 'm',  'mult' : 1000 },
-                   {'unit' : 'cm', 'mult' : 100  },
-                   {'unit' : 'mm', 'mult' : 10   }],
+                  [{'unit' : 'mile', 'mult' : 1        },
+                   {'unit' : 'km',   'mult' : 1.60934  },
+                   {'unit' : 'm',    'mult' : 1000     },
+                   {'unit' : 'yd',    'mult' : 1.09361 },
+                   {'unit' : 'cm',   'mult' : 91.44    } ,
+                   {'unit' : 'mm',   'mult' : 10       }],
                   'Time' :
                   [{'unit' : 'hours', 'mult' : 1  },
                    {'unit' : 'mins',  'mult' : 60 },
