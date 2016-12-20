@@ -21,7 +21,7 @@ function init()
   initConversionListener('right-input', 'right-input', 'right-unit', 'left-input', 'left-unit');
  
   initConversionListener('left-dropdown', 'left-input', 'left-unit', 'right-input', 'right-unit');
-  //initConversionListener('right-dropdown', 'right-input', 'right-unit', 'left-input', 'left-unit');
+  initConversionListener('right-dropdown', 'left-input', 'left-unit', 'right-input', 'right-unit');
 }
 
 function initConversionListener(listenerObj, srcInput, srcUnit, targetInput, targetUnit)
@@ -31,7 +31,8 @@ function initConversionListener(listenerObj, srcInput, srcUnit, targetInput, tar
     var val = document.getElementById(srcInput).value;
     var unit = document.getElementById(srcUnit).innerHTML;
     var tUnit = document.getElementById(targetUnit).innerHTML;
-    var tVal = convert(val, unit, tUnit);
+    var category = document.getElementById('category').innerHTML;
+    var tVal = convert(val, unit, tUnit, category);
     document.getElementById(targetInput).value = tVal;
    });
 }
@@ -66,33 +67,39 @@ function populateDropdown(dropdownClass, items, clazz)
   }
 }
 
-var distMults = [{'unit' : 'km', 'mult' : 1    },
-                 {'unit' : 'm',  'mult' : 1000 },
-                 {'unit' : 'cm', 'mult' : 100  },
-                 {'unit' : 'mm', 'mult' : 10   }];
+var conversionTable = 
+                { 'Length' : 
+                  [{'unit' : 'km', 'mult' : 1    },
+                   {'unit' : 'm',  'mult' : 1000 },
+                   {'unit' : 'cm', 'mult' : 100  },
+                   {'unit' : 'mm', 'mult' : 10   }],
+                  'Time' :
+                   []
+                };
 
-function convert(val, unit, targetUnit)
+function convert(val, unit, targetUnit, category)
 {
-  console.log("val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
-  var m = getMultiplier(unit, targetUnit);
+  console.log("cat:"+category+" val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
+  var m = getMultiplier(unit, targetUnit, category);
   if (m === 0)
   {
-    m = 1 / getMultiplier(targetUnit, unit);
+    m = 1 / getMultiplier(targetUnit, unit, category);
   }
 
   return m * val;
 }
 
-function getMultiplier(unit, targetUnit)
+function getMultiplier(unit, targetUnit, category)
 {
   var mult = 1;
   var s = false;
 
   if (unit === targetUnit) return 1;
 
-  for (var i = 0; i < distMults.length; i++)
+  var arr = conversionTable[category];
+  for (var i = 0; i < arr.length; i++)
   {
-    var d = distMults[i];
+    var d = arr[i];
     if (s)
     {
       mult *= d.mult;
