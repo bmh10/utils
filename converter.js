@@ -12,6 +12,8 @@ function init()
   populateDropdown('category-dropdown', Object.keys(categories), 'category');
   initOnClick('category', function(selected) 
   {
+      document.getElementById('left-unit').innerHTML = "&nbsp;";
+      document.getElementById('right-unit').innerHTML = "&nbsp;";
       populateDropdown('unit-dropdown', categories[selected], 'unit');
       initOnClick('unit', function(selected) {});
   });
