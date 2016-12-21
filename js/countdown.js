@@ -26,7 +26,7 @@ function initTimer()
   decHoursBtn = document.getElementById('decHours');
   incMinsBtn = document.getElementById('incMinutes');
   decMinsBtn = document.getElementById('decMinutes');
-  sound =  new Audio('bleep.mp3');
+  sound =  new Audio('../resource/bleep.mp3');
   sound.loop = true;
 
   hold(incHoursBtn, function() { adjHours(1); });
