@@ -59,12 +59,19 @@ var conversionTable =
                   'Currency' : []              
                 };
 
+var childrenEnabled = false;
+
 function init()
 {
   initDropdowns();
   populateDropdown('category-dropdown', Object.keys(conversionTable), 'category');
   initOnClick('category', function(selected) 
   {
+      if (!childrenEnabled)
+      {
+        toggleChildrenDisabled();
+        childrenEnabled = true;
+      }
       document.getElementById('left-unit').innerHTML = "&nbsp;";
       document.getElementById('right-unit').innerHTML = "&nbsp;";
       populateDropdown('unit-dropdown', conversionTable[selected].map((x) => x.unit), 'unit');
@@ -77,6 +84,16 @@ function init()
  
   initConversionListener('left-dropdown', 'left-input', 'left-unit', 'right-input', 'right-unit');
   initConversionListener('right-dropdown', 'left-input', 'left-unit', 'right-input', 'right-unit');
+  
+  toggleChildrenDisabled();
+}
+
+function toggleChildrenDisabled()
+{
+  document.getElementById('left-unit').classList.toggle('disabled');
+  document.getElementById('left-dropdown').classList.toggle('disabled');
+  document.getElementById('right-unit').classList.toggle('disabled');
+  document.getElementById('right-dropdown').classList.toggle('disabled');
 }
 
 function initConversionListener(listenerObj, srcInput, srcUnit, targetInput, targetUnit)
