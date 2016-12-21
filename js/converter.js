@@ -165,7 +165,8 @@ function convert(val, unit, targetUnit, category)
     m = 1 / getMultiplier(targetUnit, unit, category);
   }
 
-  return (m * val).toFixed(3);
+  var converted = m * val;
+  return converted % 1 == 0 ? converted : converted.toFixed(3);
 }
 
 function convertTemperature(t, unit, targetUnit)
