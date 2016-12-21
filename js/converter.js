@@ -155,7 +155,7 @@ function convert(val, unit, targetUnit, category)
   console.log("cat:"+category+" val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
   if (category === "Temperature")
   {
-    return convertTemperature(val, unit, targetUnit);
+    return convertTemperature(Number(val), unit, targetUnit);
   }
 
   var m = getMultiplier(unit, targetUnit, category);
