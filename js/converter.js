@@ -55,7 +55,15 @@ var conversionTable =
                    {'unit' : 'bar',        'mult' : 1.01325 },
                    {'unit' : 'torr',       'mult' : 750.062 },
                    {'unit' : 'pascal',     'mult' : 133.322 }],
-                  'Volume' : [],
+                  'Area' : 
+                   [{'unit' : 'square mile', 'mult' : 1 },
+                   {'unit' : 'square kilometer', 'mult' : 2.58999 },
+                   {'unit' : 'hectare', 'mult' : 100 },
+                   {'unit' : 'acre', 'mult' : 2.47105 },
+                   {'unit' : 'square meter', 'mult' : 4046.86 },
+                   {'unit' : 'square yard', 'mult' : 1.19599 },
+                   {'unit' : 'square foot', 'mult' : 9 },
+                   {'unit' : 'square inch', 'mult' : 144 }],
                   'Currency' : []              
                 };
 
