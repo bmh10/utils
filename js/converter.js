@@ -84,9 +84,10 @@ function init()
   initOnClick('category', function(selected) 
   {
       enableUnitClickHandlers(true);
-      document.getElementById('left-unit').innerHTML = "&nbsp;";
-      document.getElementById('right-unit').innerHTML = "&nbsp;";
-      populateDropdown('unit-dropdown', conversionTable[selected].map((x) => x.unit), 'unit');
+      var units = conversionTable[selected].map((x) => x.unit); 
+      document.getElementById('left-unit').innerHTML = units[0];
+      document.getElementById('right-unit').innerHTML = units[1];
+      populateDropdown('unit-dropdown', units, 'unit');
       initOnClick('unit', function(selected) {});
   });
 
