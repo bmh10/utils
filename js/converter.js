@@ -40,10 +40,10 @@ var conversionTable =
                    {'unit' : 'gram',           'mult' : 28.3495 },
                    {'unit' : 'milligram',      'mult' : 1000    },
                    {'unit' : 'microgram',      'mult' : 1000    }],
-                  'Temperature' : // TODO: need new method for temp
-                  [{'unit' : 'celsius',    'mult' : 1 },
-                   {'unit' : 'fahrenheit', 'mult' : 1 },
-                   {'unit' : 'celsius',    'mult' : 1 }],
+                  'Temperature' :
+                  [{'unit' : 'celsius',    'mult' : 0 },
+                   {'unit' : 'fahrenheit', 'mult' : 0 },
+                   {'unit' : 'kelvin',     'mult' : 0 }],
                   'Speed' :
                   [{'unit' : 'metre per second',   'mult' : 1 },
                    {'unit' : 'knot',               'mult' : 1.94384 },
@@ -66,6 +66,16 @@ var conversionTable =
                    {'unit' : 'square inch', 'mult' : 144 }],
                   'Currency' : []              
                 };
+
+var tempFuncs = {'celsius' : 
+                  {'fahrenheit' : c => (c * (9/5)) + 32,
+                   'kelvin'     : c => c + 273.15},
+                'fahrenheit' :
+                  {'celsius' : f => (f - 32) * (5/9),
+                   'kelvin'  : f => (f - 32) * (5/9) + 273.15},
+                'kelvin' :
+                  {'celsius'    : k => k - 273.15,
+                   'fahrenheit' : k => (k - 273.15) * (5/9) + 32}};
 
 function init()
 {
@@ -143,6 +153,11 @@ function populateDropdown(dropdownClass, items, clazz)
 function convert(val, unit, targetUnit, category)
 {
   console.log("cat:"+category+" val:"+val+" unit:"+unit+" tUnit:"+targetUnit);
+  if (category === "Temperature")
+  {
+    return convertTemperature(val, unit, targetUnit);
+  }
+
   var m = getMultiplier(unit, targetUnit, category);
   if (m === 0)
   {
@@ -150,6 +165,15 @@ function convert(val, unit, targetUnit, category)
   }
 
   return (m * val).toFixed(3);
+}
+
+function convertTemperature(t, unit, targetUnit)
+{
+  if (unit === targetUnit) return t;
+  try {
+    return tempFuncs[unit][targetUnit](t);
+  }
+  catch (err) {}
 }
 
 function getMultiplier(unit, targetUnit, category)
