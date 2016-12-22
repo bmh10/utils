@@ -10,6 +10,7 @@ document.write(`<nav class="navbar navbar-default">
 	<li class="active"><a href="countdown.html">Timer</a></li>
 	<li class="active"><a href="calculator.html">Calculator</a></li>
 	<li class="active"><a href="converter.html">Converter</a></li>
+	<li class="active"><a href="calendar.html">Calendar</a></li>
       </ul>
     </div>
   </div>
