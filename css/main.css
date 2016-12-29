@@ -13,6 +13,11 @@
   outline: 0 !important;
 }
 
+.flex-center {
+   display: flex;
+   align-items: center;
+}
+
 #incHours {
   right: 105px;
   top: 15px;
@@ -55,6 +60,25 @@
   border-left: 10px solid transparent;
   border-right: 10px solid transparent; 
   border-top: 10px solid grey;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0;
+  margin: 10px; 
+  border-right: 10px solid grey; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.arrow-right {
+  width: 0; 
+  height: 0;
+  margin: 10px;
+  position: relative;
+  border-left: 10px solid grey; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 
 .noselect {
