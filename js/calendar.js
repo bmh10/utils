@@ -6,15 +6,20 @@ function loadCalendar()
   document.getElementById('date').innerHTML = firstDayOfMonth + "-" + lastDayOfMonth;
 
   console.log(firstDayOfMonth.getDay());
-  var tr = document.getElementsByTagName('tr');
+  var table = document.getElementById('calendar');
 
   // First row of calendar
   var day = 1;
+  var h = '<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr><tr>';
+
   for (var i = 0; i < 7; i++) {
     if (i < firstDayOfMonth.getDay()) {
-      tr[1].innerHTML += '<td></td>';
+      h += '<td></td>';
     } else {
-      tr[1].innerHTML += '<td>' + (day++)  + '</td>'
+      h += '<td>' + (day++)  + '</td>'
     }
   }
+  
+  h += '</tr>';
+  table.innerHTML = h;
 }
