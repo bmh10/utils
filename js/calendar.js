@@ -8,7 +8,6 @@ function loadCalendar()
   console.log(firstDayOfMonth.getDay());
   var table = document.getElementById('calendar');
 
-  var day = 1;
   var h = '<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr><tr>';
 
   for (var i = 0; i < firstDayOfMonth.getDay() + lastDayOfMonth.getDate(); i++) {
@@ -18,7 +17,9 @@ function loadCalendar()
     if (i < firstDayOfMonth.getDay()) {
       h += '<td></td>';
     } else {
-      h += '<td>' + (day++)  + '</td>'
+      var date = i - firstDayOfMonth.getDay() + 1;
+      var col = (date == now.getDate()) ? "red" : "white";
+      h += '<td style="color:' + col + '">' + date + '</td>';
     }
   }
   
