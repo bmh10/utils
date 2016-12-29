@@ -1,9 +1,10 @@
 function loadCalendar()
 {
-  var now = new Date();
+  var now = new Date(2017, 0, 1);
   var firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   var lastDayOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0);
-  document.getElementById('date').innerHTML = firstDayOfMonth + "-" + lastDayOfMonth;
+  var options = { month: "long", year: "numeric" };
+  document.getElementById('month').innerHTML = now.toLocaleDateString('en-GB', options);
 
   console.log(firstDayOfMonth.getDay());
   var table = document.getElementById('calendar');
