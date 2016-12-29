@@ -1,6 +1,6 @@
 function loadCalendar()
 {
-  var now = new Date(2017, 0, 1);
+  var now = new Date();
   var firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   var lastDayOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0);
   var options = { month: "long", year: "numeric" };
@@ -11,11 +11,12 @@ function loadCalendar()
 
   var h = '<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr><tr>';
 
-  for (var i = 0; i < firstDayOfMonth.getDay() + lastDayOfMonth.getDate(); i++) {
+  for (var i = 0; i < firstDayOfMonth.getDay() + lastDayOfMonth.getDate() + (6 - lastDayOfMonth.getDay()); i++) {
     if (i % 7 == 0) {
       h += '</tr><tr>';
     }
-    if (i < firstDayOfMonth.getDay()) {
+    if (i < firstDayOfMonth.getDay() || 
+        i > firstDayOfMonth.getDay() + lastDayOfMonth.getDate()) {
       h += '<td></td>';
     } else {
       var date = i - firstDayOfMonth.getDay() + 1;
