@@ -8,11 +8,13 @@ function loadCalendar()
   console.log(firstDayOfMonth.getDay());
   var table = document.getElementById('calendar');
 
-  // First row of calendar
   var day = 1;
   var h = '<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr><tr>';
 
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < firstDayOfMonth.getDay() + lastDayOfMonth.getDate(); i++) {
+    if (i % 7 == 0) {
+      h += '</tr><tr>';
+    }
     if (i < firstDayOfMonth.getDay()) {
       h += '<td></td>';
     } else {
