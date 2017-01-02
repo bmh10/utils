@@ -8,6 +8,10 @@ function loadCalendar()
 
   console.log(firstDayOfMonth.getDay());
   var table = document.getElementById('calendar');
+  var leftArrow = document.getElementById('decMonth');
+  var rightArrow = document.getElementById('incMonth');
+  leftArrow.onclick = function() {alert('dec month');};
+  rightArrow.onclick = function() {alert('inc month');};
 
   var h = '<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr><tr>';
 
