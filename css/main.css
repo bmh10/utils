@@ -16,6 +16,16 @@
 .flex-center {
    display: flex;
    align-items: center;
+   flex-flow: row wrap;
+}
+
+.flex-title {
+  flex: 1 100%;
+}
+
+.flex-calendar {
+  flex: 1;
+  width: 85%;
 }
 
 #incHours {
