@@ -1,19 +1,36 @@
-function loadCalendar()
+var currDate;
+var shownDate;
+
+function init()
 {
-  var now = new Date();
+  currDate = new Date();
+  shownDate = currDate;
+  loadCalendar(shownDate);
+
+  var leftArrow = document.getElementById('decMonth');
+  var rightArrow = document.getElementById('incMonth');
+  leftArrow.onclick = function() {
+    shownDate = new Date(shownDate.getFullYear(), shownDate.getMonth()-1, 1);
+    loadCalendar(shownDate);
+  };
+  rightArrow.onclick = function() {
+    shownDate = new Date(shownDate.getFullYear(), shownDate.getMonth()+1, 1);
+    loadCalendar(shownDate);
+  };
+}
+
+function loadCalendar(now)
+{
   var firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   var lastDayOfMonth = new Date(now.getFullYear(), now.getMonth()+1, 0);
   var options = { month: "long", year: "numeric" };
   document.getElementById('month').innerHTML = now.toLocaleDateString('en-GB', options);
 
-  console.log(firstDayOfMonth.getDay());
   var table = document.getElementById('calendar');
-  var leftArrow = document.getElementById('decMonth');
-  var rightArrow = document.getElementById('incMonth');
-  leftArrow.onclick = function() {alert('dec month');};
-  rightArrow.onclick = function() {alert('inc month');};
 
   var h = '<tr><td>Sun</td><td>Mon</td><td>Tue</td><td>Wed</td><td>Thur</td><td>Fri</td><td>Sat</td></tr><tr>';
+
+  var highlightToday = currDate.getFullYear() == now.getFullYear() && currDate.getMonth() == now.getMonth();  
 
   for (var i = 0; i < firstDayOfMonth.getDay() + lastDayOfMonth.getDate() + (6 - lastDayOfMonth.getDay()); i++) {
     if (i % 7 == 0) {
@@ -24,7 +41,7 @@ function loadCalendar()
       h += '<td></td>';
     } else {
       var date = i - firstDayOfMonth.getDay() + 1;
-      var col = (date == now.getDate()) ? "red" : "white";
+      var col = (highlightToday && date == currDate.getDate()) ? "red" : "white";
       h += '<td style="color:' + col + '">' + date + '</td>';
     }
   }
