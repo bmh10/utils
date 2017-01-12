@@ -110,7 +110,7 @@ function enableUnitClickHandlers(enabled)
 function initConversionListener(listenerObj, srcInput, srcUnit, targetInput, targetUnit)
 {
   var inputObj = document.getElementById(listenerObj);
-  inputObj.addEventListener('focusout', function() {
+  inputObj.addEventListener('keyup', function() {
     var val = document.getElementById(srcInput).value;
     var unit = document.getElementById(srcUnit).innerHTML;
     var tUnit = document.getElementById(targetUnit).innerHTML;
@@ -166,22 +166,28 @@ function convert(val, unit, targetUnit, category)
   }
 
   var converted = m * val;
-  return converted % 1 == 0 ? converted : converted.toFixed(3);
+  return formatResult(converted);
 }
 
 function convertTemperature(t, unit, targetUnit)
 {
   if (unit === targetUnit) return t;
   try {
-    return tempFuncs[unit][targetUnit](t);
+    var converted = tempFuncs[unit][targetUnit](t);
+    return formatResult(converted);
   }
   catch (err) {}
+}
+
+function formatResult(val)
+{
+  return val % 1 == 0 ? val : val.toFixed(3);
 }
 
 function getMultiplier(unit, targetUnit, category)
 {
   var mult = 1;
-  var s = false;
+  var startMult = false;
 
   if (unit === targetUnit) return 1;
 
@@ -189,7 +195,7 @@ function getMultiplier(unit, targetUnit, category)
   for (var i = 0; i < arr.length; i++)
   {
     var d = arr[i];
-    if (s)
+    if (startMult)
     {
       mult *= d.mult;
       if (d.unit === targetUnit)
@@ -198,7 +204,7 @@ function getMultiplier(unit, targetUnit, category)
       }
     }
 
-    if (d.unit === unit) s = true;
+    if (d.unit === unit) startMult = true;
   }
 
   return 0;
