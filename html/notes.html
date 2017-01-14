@@ -2,12 +2,14 @@
 <html>
   <head>
     <title>Notes</title>
+    <script type="text/javascript" src="../js/notes.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
   </head>
   <body>
     <script src="../js/nav.js"></script>
     <div class="centered">
-      <textarea>A note.</textarea>
+      <textarea id="note"style="height:300px; width:450px;">A note.</textarea><br/>
+      <button id="saveNote" class="btn btn-success" onclick="saveNote()">Save</button>
     </div>
   </body>
 </html>
