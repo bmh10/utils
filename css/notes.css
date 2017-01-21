@@ -7,6 +7,13 @@
 
 .left-panel {
   background-color: red;
-  height: 500px;
+  height: 80vh;
   width: 200px;
+}
+
+.saved-note {
+  background-color: blue;
+  height: 100px;
+  width: 196px;
+  margin: 2px;
 }
