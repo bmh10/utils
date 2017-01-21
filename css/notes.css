@@ -4,3 +4,9 @@
   width: 450px;
   max-width: 450px;
 }
+
+.left-panel {
+  background-color: red;
+  height: 500px;
+  width: 200px;
+}
