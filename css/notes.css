@@ -6,9 +6,9 @@
 }
 
 .left-panel {
-  background-color: red;
   height: 80vh;
   width: 200px;
+  padding: 0;
 }
 
 .saved-note {
