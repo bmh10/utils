@@ -1,13 +1,14 @@
 
 function saveNote() {
   var noteContent = document.getElementById('note').value;
+  if (noteContent === '') return;
   addNoteToSidebar(noteContent);
   createCookie("content", noteContent, 1);
 }
 
 function addNoteToSidebar(content) {
   var leftPanel = document.getElementById('left-panel');
-  leftPanel.innerHTML += '<div class="saved-note">' + content + '</div>';
+  leftPanel.innerHTML += '<div class="saved-note well">' + content + '</div>';
 
 }
 

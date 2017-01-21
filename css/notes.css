@@ -12,8 +12,8 @@
 }
 
 .saved-note {
-  background-color: blue;
+  background-color: #333333;
   height: 100px;
-  width: 196px;
-  margin: 2px;
+  width: 96%;
+  margin: 2%;
 }
