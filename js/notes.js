@@ -17,6 +17,7 @@ function addNoteToSidebar(content, id) {
     content = content.substring(0, 20) + "...";
   }
   leftPanel.innerHTML += '<div id="note-' + id + '" class="saved-note well" onclick=loadNote(' + id + ')><button type="button" class="close" onclick=deleteNote(' + id + ')>&times;</button>' + content + '</div>';
+  updateSidebarVisibility();
 }
 
 function loadNote(id) {
@@ -27,8 +28,18 @@ function loadNote(id) {
 function deleteNote(id) {
   var note = document.getElementById("note-" + id);
   note.parentNode.removeChild(note);
+  delete msgs[id];
+  updateSidebarVisibility();
 }
 
+function updateSidebarVisibility() {
+  var leftPanel = document.getElementById('left-panel');
+  if (Object.keys(msgs).length == 0) {
+     leftPanel.classList.add('hidden');
+  } else {
+     leftPanel.classList.remove('hidden');
+  }
+}
 
 // Cookie functions
 

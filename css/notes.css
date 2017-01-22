@@ -22,3 +22,7 @@
 .saved-note:hover {
   background-color: #111111;
 }
+
+.hidden {
+  display: none;
+}
