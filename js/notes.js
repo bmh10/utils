@@ -1,23 +1,31 @@
 
+var msgs = {};
+var id = 0;
+
 function saveNote() {
   var noteContent = document.getElementById('note').value;
   if (noteContent === '') return;
-  addNoteToSidebar(noteContent);
-  createCookie("content", noteContent, 1);
+  msgs[id] = noteContent;
+  addNoteToSidebar(noteContent, id);
+  id++;
+  //createCookie("content", noteContent, 1);
 }
 
-function addNoteToSidebar(content) {
+function addNoteToSidebar(content, id) {
   var leftPanel = document.getElementById('left-panel');
   if (content.length > 20) {
     content = content.substring(0, 20) + "...";
   }
-  leftPanel.innerHTML += '<div class="saved-note well">' + content + '</div>';
-
+  leftPanel.innerHTML += '<div class="saved-note well" onclick=loadNote(' + id + ')>' + content + '</div>';
 }
 
-function loadNote() {
-  document.getElementById('note').value = readCookie("content");
+function loadNote(id) {
+  var noteContent = msgs[id];
+  document.getElementById('note').value = noteContent; //readCookie("content");
 }
+
+
+// Cookie functions
 
 function createCookie(name, value, days) {
     var expires = "";
