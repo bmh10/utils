@@ -17,3 +17,7 @@
   width: 96%;
   margin: 2%;
 }
+
+.saved-note:hover {
+  background-color: #111111;
+}
