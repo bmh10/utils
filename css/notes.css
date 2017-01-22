@@ -6,9 +6,10 @@
 }
 
 .left-panel {
-  height: 80vh;
+  height: 85vh;
   width: 200px;
   padding: 0;
+  overflow: auto;
 }
 
 .saved-note {
