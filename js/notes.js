@@ -8,6 +8,9 @@ function saveNote() {
 
 function addNoteToSidebar(content) {
   var leftPanel = document.getElementById('left-panel');
+  if (content.length > 20) {
+    content = content.substring(0, 20) + "...";
+  }
   leftPanel.innerHTML += '<div class="saved-note well">' + content + '</div>';
 
 }
