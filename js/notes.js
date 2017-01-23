@@ -22,7 +22,9 @@ function addNoteToSidebar(content, id) {
 
 function loadNote(id) {
   var noteContent = msgs[id];
-  document.getElementById('note').value = noteContent; //readCookie("content");
+  if (noteContent) {
+    document.getElementById('note').value = noteContent; //readCookie("content");
+  }
 }
 
 function deleteNote(id) {
@@ -30,6 +32,7 @@ function deleteNote(id) {
   note.parentNode.removeChild(note);
   delete msgs[id];
   updateSidebarVisibility();
+  document.getElementById('note').value = "";
 }
 
 function updateSidebarVisibility() {
