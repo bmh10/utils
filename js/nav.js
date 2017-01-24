@@ -13,6 +13,9 @@ document.write(`<nav class="navbar navbar-default">
 	<li class="active"><a href="calendar.html">Calendar</a></li>
 	<li class="active"><a href="notes.html">Notes</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="feedback.html">Feedback</a></li>
+      </ul>
     </div>
   </div>
 </nav>`);
