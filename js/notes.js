@@ -1,6 +1,12 @@
 
-var msgs = {};
-var id = 0;
+var msgs = localStorage;
+var id = localStorage.length;
+
+function init() {
+  for (key in localStorage) {
+    addNoteToSidebar(localStorage[key], key);
+  }
+}
 
 function saveNote() {
   var noteContent = document.getElementById('note').value;
