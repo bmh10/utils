@@ -3,10 +3,17 @@
   <head>
     <title>Feedback</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script type="text/javascript" src="../js/feedback.js"></script>
+    <script type="text/javascript" src="../js/dropdown.js"></script>
   </head>
-  <body>
+  <body onload=init()>
     <script src="../js/nav.js"></script>
     <div class="centered">
+      <button href="#" id="category" class="btn btn-primary selected-category">Category</button>
+      <button href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+	<ul class="dropdown-menu category-dropdown"></ul>
+      </div>
+
       <textarea id="feedback" class="note form-control" autofocus></textarea><br/>
       <button id="submit-feedback" class="btn btn-success" onclick="submitFeedback()">Submit</button>
     </div>
