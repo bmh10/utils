@@ -4,7 +4,12 @@ function init()
 {
   initDropdowns();
   populateDropdown('category-dropdown', feedbackTypes, 'category');
-  initOnClick('category', function(selected) {})
+  initOnClick('category', function(selected) {
+    var feedbackTextarea = document.getElementById('feedback');
+    var submitBtn = document.getElementById('submit-feedback');
+    feedbackTextarea.classList.remove("hidden");
+    submitBtn.classList.remove("hidden");
+  });
 }
 
 // TODO: duplicated from converter.js
