@@ -14,7 +14,13 @@ function init()
 
 function submitFeedback()
 {
-  alert('Feedback submitted');
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:5000/feedback');
+  xhr.onload = function()
+  {
+    alert('Feedback submitted');
+  }
+  xhr.send();
 }
 
 // TODO: duplicated from converter.js
