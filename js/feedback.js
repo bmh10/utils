@@ -14,13 +14,18 @@ function init()
 
 function submitFeedback()
 {
+  // TODO: use real data
+  var data = new FormData();
+  data.append('type', 'Bug Report');
+  data.append('message', 'There is a bug blah blah blah');
+
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'http://localhost:5000/feedback');
   xhr.onload = function()
   {
     alert('Feedback submitted');
   }
-  xhr.send();
+  xhr.send(data);
 }
 
 // TODO: duplicated from converter.js
