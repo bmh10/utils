@@ -12,6 +12,11 @@ function init()
   });
 }
 
+function submitFeedback()
+{
+  alert('Feedback submitted');
+}
+
 // TODO: duplicated from converter.js
 function populateDropdown(dropdownClass, items, clazz)
 {
