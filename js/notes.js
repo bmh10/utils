@@ -1,17 +1,20 @@
 
 var msgs = localStorage;
+var keyPrefix = "util";
 var id = localStorage.length;
 
 function init() {
   for (key in localStorage) {
-    addNoteToSidebar(localStorage[key], key);
+    if (key.startsWith(keyPrefix)) {    
+      addNoteToSidebar(localStorage[key], key.replace(keyPrefix, ''));
+    }
   }
 }
 
 function saveNote() {
   var noteContent = document.getElementById('note').value;
   if (noteContent === '') return;
-  msgs[id] = noteContent;
+  msgs[keyPrefix + id] = noteContent;
   addNoteToSidebar(noteContent, id);
   id++;
   //createCookie("content", noteContent, 1);
@@ -27,7 +30,7 @@ function addNoteToSidebar(content, id) {
 }
 
 function loadNote(id) {
-  var noteContent = msgs[id];
+  var noteContent = msgs[keyPrefix + id];
   if (noteContent) {
     document.getElementById('note').value = noteContent; //readCookie("content");
   }
@@ -36,7 +39,7 @@ function loadNote(id) {
 function deleteNote(id) {
   var note = document.getElementById("note-" + id);
   note.parentNode.removeChild(note);
-  delete msgs[id];
+  delete msgs[keyPrefix + id];
   updateSidebarVisibility();
   document.getElementById('note').value = "";
 }
