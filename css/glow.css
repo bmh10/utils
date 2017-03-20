@@ -1,7 +1,7 @@
 @-webkit-keyframes pulse {
-  0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
-  50% { box-shadow:0 0 16px #ea4c89, inset 0 0 14px #ea4c89; }
-  100% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
+  0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #4c58ea; }
+  50% { box-shadow:0 0 16px #ea4c89, inset 0 0 14px #4c58ea; }
+  100% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #4c58ea; }
 }
 
 .inner {
@@ -9,7 +9,7 @@
   width:10px;
   height:10px;
   border-radius:50px;
-  box-shadow: 0 0 8px #ea4c89, inset 0 0 8px #ea4c89;
+  box-shadow: 0 0 8px #4c58ea, inset 0 0 8px #4c58ea;
   -webkit-animation: pulse 2s linear 1s infinite;
 }
 
@@ -20,6 +20,6 @@
   font-family:sans-serif;
   font-weight:100;
   font-size:24px;
-  color: #ea4c89;
-  text-shadow: 0 0 4px #ea4c89;
+  color: #4c58ea;
+  text-shadow: 0 0 4px #4c58ea;
 }
