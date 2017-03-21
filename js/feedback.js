@@ -14,10 +14,9 @@ function init()
 
 function submitFeedback()
 {
-  // TODO: use real data
   var data = new FormData();
-  data.append('type', 'Bug Report');
-  data.append('message', 'There is a bug blah blah blah');
+  data.append('type', document.getElementById('category').innerHTML);
+  data.append('message', document.getElementById('feedback').value);
 
   var xhr = new XMLHttpRequest();
   xhr.open('POST', 'http://localhost:5000/feedback');
