@@ -1,3 +1,4 @@
 *.swp
 *.swo
 server/venv*
+*.log
