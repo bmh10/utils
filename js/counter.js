@@ -13,6 +13,10 @@ function init() {
   hold(decCounterBtn, function() { adjCounter(-1); });
 }
 
+function addCounter() {
+  alert('Add counter');
+}
+
 function adjCounter(n) {
   counter += n;
   counterElem.innerHTML = counter; 
