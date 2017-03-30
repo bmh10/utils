@@ -2,9 +2,10 @@ var counter = 0;
 var counterElem;
 var incCounterBtn;
 var decCounterBtn;
+var id = 0;
 
 function init() {
-  counterLabel = document.getElementById('counterLabel');
+  /*counterLabel = document.getElementById('counterLabel');
   counterLabel.innerHTML = 'My Counter';
   counterElem = document.getElementById('count');
   counterElem.innerHTML = counter;
@@ -12,11 +13,23 @@ function init() {
   decCounterBtn = document.getElementById('decCounter');
 
   hold(incCounterBtn, function() { adjCounter(1);  });
-  hold(decCounterBtn, function() { adjCounter(-1); });
+  hold(decCounterBtn, function() { adjCounter(-1); }); */
 }
 
 function addCounter() {
   alert('Add counter');
+  id++;
+  document.getElementById('counters').innerHTML += 
+      '<h6 id="counterLabel" class="noselect">Counter' + id + '</h6>' +
+      '<div id="counter">' +
+      '  <div>' +
+      '    <span id="incCounter" class="arrow-up"></span>' +
+      '  </div>' +
+      '  <h1 id="count" class="noselect">0</h1>' +
+      '  <div>' +
+      '    <span id="decCounter" class="arrow-down"></span>' +
+      '  </div>' +
+      '</div>';
 }
 
 function adjCounter(n) {
