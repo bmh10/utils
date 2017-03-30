@@ -4,6 +4,8 @@ var incCounterBtn;
 var decCounterBtn;
 
 function init() {
+  counterLabel = document.getElementById('counterLabel');
+  counterLabel.innerHTML = 'My Counter';
   counterElem = document.getElementById('count');
   counterElem.innerHTML = counter;
   incCounterBtn = document.getElementById('incCounter');
