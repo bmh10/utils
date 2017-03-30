@@ -21,15 +21,18 @@ function addCounter() {
   id++;
   document.getElementById('counters').innerHTML += 
       '<h6 id="counterLabel" class="noselect">Counter' + id + '</h6>' +
-      '<div id="counter">' +
+      '<div id="counter' + id + '">' +
       '  <div>' +
-      '    <span id="incCounter" class="arrow-up"></span>' +
+      '    <span id="incCounter' + id + '" class="arrow-up"></span>' +
       '  </div>' +
-      '  <h1 id="count" class="noselect">0</h1>' +
+      '  <h1 id="count' + id + '" class="noselect">0</h1>' +
       '  <div>' +
-      '    <span id="decCounter" class="arrow-down"></span>' +
+      '    <span id="decCounter' + id + '" class="arrow-down"></span>' +
       '  </div>' +
       '</div>';
+
+  hold(document.getElementById('incCounter' + id), function () {adjCounter(1);});
+  hold(document.getElementById('decCounter' + id), function () {adjCounter(-1);});
 }
 
 function adjCounter(n) {
