@@ -17,7 +17,6 @@ function init() {
 }
 
 function addCounter() {
-  alert('Add counter');
   id++;
   document.getElementById('counters').innerHTML += 
       '<h6 id="counterLabel" class="noselect">Counter' + id + '</h6>' +
@@ -31,13 +30,14 @@ function addCounter() {
       '  </div>' +
       '</div>';
 
-  hold(document.getElementById('incCounter' + id), function () {adjCounter(1);});
-  hold(document.getElementById('decCounter' + id), function () {adjCounter(-1);});
+  var counterElem = document.getElementById('count' + id);
+
+  hold(document.getElementById('incCounter' + id), function () {adjCounter(counterElem, 1);});
+  hold(document.getElementById('decCounter' + id), function () {adjCounter(counterElem, -1);});
 }
 
-function adjCounter(n) {
-  counter += n;
-  counterElem.innerHTML = counter; 
+function adjCounter(elem, n) {
+  elem.innerHTML = parseInt(elem.innerHTML) + n; 
 }
 
 // TODO: same as in countdown.js - extract
