@@ -19,8 +19,8 @@ function init() {
 function addCounter() {
   id++;
   document.getElementById('counters').innerHTML += 
-      '<h6 id="counterLabel" class="noselect">Counter' + id + '</h6>' +
-      '<div id="counter' + id + '">' +
+      '<div id="counter' + id + '" style="margin: 0 25px 0 25px;">' +
+      '  <h6 id="counterLabel" class="noselect">Counter' + id + '</h6>' +
       '  <div>' +
       '    <span id="incCounter' + id + '" class="arrow-up"></span>' +
       '  </div>' +
