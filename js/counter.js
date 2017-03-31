@@ -18,7 +18,7 @@ function init() {
 
 function addCounter() {
   id++;
-  document.getElementById('counters').innerHTML += 
+  document.getElementById('counters').insertAdjacentHTML('beforeend', 
       '<div id="counter' + id + '" style="margin: 0 25px 0 25px;">' +
       '  <h6 id="counterLabel" class="noselect">Counter' + id + '</h6>' +
       '  <div>' +
@@ -28,7 +28,7 @@ function addCounter() {
       '  <div>' +
       '    <span id="decCounter' + id + '" class="arrow-down"></span>' +
       '  </div>' +
-      '</div>';
+      '</div>');
 
   var counterElem = document.getElementById('count' + id);
 
