@@ -1,26 +1,15 @@
-var counter = 0;
-var counterElem;
-var incCounterBtn;
-var decCounterBtn;
 var id = 0;
 
 function init() {
-  /*counterLabel = document.getElementById('counterLabel');
-  counterLabel.innerHTML = 'My Counter';
-  counterElem = document.getElementById('count');
-  counterElem.innerHTML = counter;
-  incCounterBtn = document.getElementById('incCounter');
-  decCounterBtn = document.getElementById('decCounter');
-
-  hold(incCounterBtn, function() { adjCounter(1);  });
-  hold(decCounterBtn, function() { adjCounter(-1); }); */
+  addCounter();
 }
 
 function addCounter() {
+  if (id > 8) return;
   id++;
   document.getElementById('counters').insertAdjacentHTML('beforeend', 
       '<div id="counter' + id + '" style="margin: 0 25px 0 25px;">' +
-      '  <input id="counterLabel" class="transparent noselect" placeholder="Counter' + id + '"></h6>' +
+      '  <input id="counterLabel" class="transparent-input noselect" placeholder="Counter' + id + '"></h6>' +
       '  <div>' +
       '    <span id="incCounter' + id + '" class="arrow-up"></span>' +
       '  </div>' +
