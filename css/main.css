@@ -14,6 +14,11 @@
   transform: translate(-50%, -50%);
 }
 
+.transparent {
+  background: transparent;
+  border: none;
+}
+
 .margin-auto {
   margin: auto;
 }
