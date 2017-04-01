@@ -17,6 +17,7 @@
 .transparent {
   background: transparent;
   border: none;
+  text-align: center;
 }
 
 .margin-auto {
