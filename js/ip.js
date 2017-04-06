@@ -1,13 +1,14 @@
 function init() {
-  document.getElementById('ip').innerHTML = getIP();
+  var info = getIPInfo();
+  document.getElementById('ip').innerHTML = info.ip;
 
 }
 
-function getIP() {
+function getIPInfo() {
     xmlhttp = new XMLHttpRequest();
     
     xmlhttp.open("GET", "http://ipinfo.io/json", false);
     xmlhttp.send();
 
-    return xmlhttp.responseText;
+    return JSON.parse(xmlhttp.responseText);
 }
