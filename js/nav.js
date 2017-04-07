@@ -14,6 +14,7 @@ document.write(`<nav class="navbar navbar-default">
 	<li class="active"><a href="notes.html">Notes</a></li>
 	<li class="active"><a href="counter.html">Counter</a></li>
 	<li class="active"><a href="ip.html">IP</a></li>
+	<li class="active"><a href="currency.html">Currency</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="feedback.html">Feedback</a></li>
