@@ -2,7 +2,8 @@ function init() {
   initDropdowns();
   var info = getCurrencyInfo();
   var currencies = Object.keys(info.rates);
-  populateDropdown('currency-dropdown', currencies, 'currency');
+  populateDropdown('unit-dropdown', currencies, 'unit');
+ // document.getElementById('left-dropdown').innerHTML = currencies;
   initOnClick('currency', function(selected) {})
 }
 
