@@ -3,12 +3,18 @@
   <head>
     <title>Currency</title>
     <script type="text/javascript" src="../js/currency.js"></script>
+    <script type="text/javascript" src="../js/dropdown.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
   </head>
   <body onload="init()">
     <script src="../js/nav.js"></script>
     <div class="centered">
       <p id="info"></p>
+      <div class="btn-group form-group">
+        <button href="#" id="currency" class="btn btn-primary selected-currency">Currency</button>
+        <button href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+        <ul class="dropdown-menu currency-dropdown"></ul>
+      </div>
     </div>
   </body>
 </html>
