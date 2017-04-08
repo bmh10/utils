@@ -2,8 +2,8 @@ function init() {
   initDropdowns();
   var info = getCurrencyInfo();
   var currencies = Object.keys(info.rates);
-  document.getElementById('info').innerHTML = JSON.stringify(info.rates);
   populateDropdown('currency-dropdown', currencies, 'currency');
+  initOnClick('currency', function(selected) {})
 }
 
 function getCurrencyInfo() {
@@ -24,6 +24,20 @@ function populateDropdown(dropdownClass, items, clazz) {
        dropdown.innerHTML +=
          '<li><a href="#" class="' + clazz  + '">' + items[i]  + '</a></li>';        
      }
+  }
+}
+
+// TODO: duplicates from converter.js
+function initOnClick(clazz, func)
+{
+  var elems = document.getElementsByClassName(clazz);
+  for (var i = 0; i < elems.length; i++) {
+    elems[i].onclick = function() {
+      var target = event.target || event.srcElement;
+      var selected = target.innerHTML;
+      target.parentElement.parentElement.parentElement.getElementsByClassName('selected-' + clazz)[0].innerHTML = selected;
+      func(selected);
+    }
   }
 }
 
