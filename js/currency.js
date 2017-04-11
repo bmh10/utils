@@ -21,6 +21,7 @@ function getCurrencyInfo() {
   return JSON.parse(xmlhttp.responseText);
 }
 
+// TODO: almost same as in conversion.js
 function initConversionListener(listenerObj, srcInput, srcUnit, targetInput, targetUnit)
 {
   var inputObj = document.getElementById(listenerObj);

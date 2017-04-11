@@ -64,7 +64,7 @@ var conversionTable =
                    {'unit' : 'square yard', 'mult' : 1.19599 },
                    {'unit' : 'square foot', 'mult' : 9 },
                    {'unit' : 'square inch', 'mult' : 144 }],
-                  'Currency' : []              
+                  'Currency' : [] // Pulled from API
                 };
 
 var tempFuncs = {'celsius' : 
@@ -84,7 +84,12 @@ function init()
   initOnClick('category', function(selected) 
   {
       enableUnitClickHandlers(true);
-      var units = conversionTable[selected].map((x) => x.unit); 
+      var units;
+      if (selected == 'Currency') {
+        units = Object.keys(getCurrencyInfo().rates)
+      } else {
+        units = conversionTable[selected].map((x) => x.unit);
+      }
       document.getElementById('left-unit').innerHTML = units[0];
       document.getElementById('right-unit').innerHTML = units[1];
       populateDropdown('unit-dropdown', units, 'unit');
@@ -99,6 +104,13 @@ function init()
   initConversionListener('right-dropdown', 'left-input', 'left-unit', 'right-input', 'right-unit');
   
   enableUnitClickHandlers(false);
+}
+
+function getCurrencyInfo() {
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", "http://api.fixer.io/latest?base=GBP", false);
+  xmlhttp.send();
+  return JSON.parse(xmlhttp.responseText);
 }
 
 function enableUnitClickHandlers(enabled)
