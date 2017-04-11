@@ -85,9 +85,12 @@ function init()
   {
       enableUnitClickHandlers(true);
       var units;
-      if (selected == 'Currency') {
-        units = Object.keys(getCurrencyInfo().rates)
-      } else {
+      if (selected == 'Currency') 
+      {
+        units = Object.keys(getCurrencyInfo('GBP').rates)
+      } 
+      else
+      {
         units = conversionTable[selected].map((x) => x.unit);
       }
       document.getElementById('left-unit').innerHTML = units[0];
@@ -106,11 +109,18 @@ function init()
   enableUnitClickHandlers(false);
 }
 
-function getCurrencyInfo() {
+function getCurrencyInfo(baseCurrency) {
   xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("GET", "http://api.fixer.io/latest?base=GBP", false);
+  xmlhttp.open("GET", "http://api.fixer.io/latest?base=" + baseCurrency, false);
   xmlhttp.send();
   return JSON.parse(xmlhttp.responseText);
+}
+
+function convertCurrency(val, curr, targetCurr)
+{
+  var currInfo = getCurrencyInfo(curr);
+  var mult = currInfo.rates[targetCurr];
+  return mult * val;
 }
 
 function enableUnitClickHandlers(enabled)
@@ -138,6 +148,11 @@ function convert(val, unit, targetUnit, category)
   if (category === "Temperature")
   {
     return convertTemperature(Number(val), unit, targetUnit);
+  }
+
+  if (category === "Currency")
+  {
+    return convertCurrency(Number(val), unit, targetUnit);
   }
 
   var m = getMultiplier(unit, targetUnit, category);
