@@ -5,6 +5,12 @@
   font-family: 'Oxygen', sans-serif;
 }
 
+.scrollable-dropdown {
+  max-height: 280px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .centered {
   text-align: center;
   position: fixed; /* or absolute */
